@@ -88,6 +88,11 @@ def rapport(f: Path) -> dict[str, dict[str, bool]]:
     part = [e["part_conversation"] for e in entrees if e["categorie"] in CATEGORIES]
     print(f"  contexte médian : {statistics.median(ctx):,.0f} jetons".replace(",", " ")
           + f" ({100 * statistics.median(part):.0f} % de la conversation)")
+    # Questions dont TOUS les tours de preuve officiels (champ evidence du jeu) sont parmi les souvenirs rendus.
+    cov = [e["preuves_toutes_rendues"] for e in entrees
+           if e["categorie"] in CATEGORIES and e.get("preuves_toutes_rendues") is not None]
+    if cov:
+        print(f"  toutes les preuves rendues par la mémoire : {sum(cov)}/{len(cov)} = {pct(sum(cov), len(cov))}")
     return {j: {e["question_id"]: e["juges"][j]["verdict"] for e in entrees
                 if e["categorie"] in CATEGORIES and j in e["juges"]} for j in JUGES}
 

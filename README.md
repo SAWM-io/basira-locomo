@@ -57,6 +57,14 @@ Juge J, passe 1, par catégorie (jusqu'à 320 souvenirs) :
 Questions pièges (catégorie 5, 444 questions comptées sur 446 : voir la méthode) : **82,7 %** (367/444) en passe 1,
 81,5 % en passe 2 ; 83,3 % puis 83,6 % avec 160 souvenirs.
 
+### Ce que la mémoire rend
+
+Pour chaque question, LoCoMo indique les tours de la conversation qui contiennent la réponse. Avec le rappel jusqu'à
+320 souvenirs, **tous ces tours de preuve sont dans ce que Basira rend au lecteur pour 95,3 % des questions**
+(1 455/1 527 questions dont les preuves sont annotées), alors que le lecteur ne reçoit qu'environ la moitié de la
+conversation. Avec 160 souvenirs (un quart de la conversation), c'est 85,1 %. Champ `preuves_toutes_rendues` dans
+`reponses/`.
+
 ### Comparaison avec la conversation complète
 
 Sur un échantillon fixe de 310 questions des catégories 1 à 4, Claude Opus 5.5 reçoit la conversation entière
