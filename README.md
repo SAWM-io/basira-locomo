@@ -1,11 +1,12 @@
 # SAWM & Basira Memory liquide — LoCoMo
 
-**95,8 % – 96,0 %** sur LoCoMo (catégories 1 à 4, 1 540 questions), notés par le juge J de Mem0.
+**96 %** sur LoCoMo avec Claude Opus 5.5 (catégories 1 à 4, 1 540 questions).
+Juge de référence J de Mem0 : 95,97 % puis 95,84 % sur deux passes ; juge strict GPT-4o : 92,08 % puis 91,95 %.
 En production sur l'API Basira : l'écriture des conversations et le rappel de ce banc
 passent par l'API de production.
 Chaque réponse est publiée ici, question par question, avec les verdicts des juges : recomptez-les vous-même.
 
-> **English summary.** SAWM & Basira Memory liquide scores **95.8 % – 96.0 %** on LoCoMo (categories 1 to 4,
+> **English summary.** SAWM & Basira Memory liquide scores **96 %** on LoCoMo with Claude Opus 5.5 (95.97 % then 95.84 %) (categories 1 to 4,
 > 1,540 questions) with the Mem0 "J" judge (`gpt-4o-mini`, official Mem0 2025 prompt), over two independent judge
 > passes, and **91.9 % – 92.1 %** with the strict GPT-4o judge of LongMemEval. Memory written and recalled through the
 > production Basira API, one memory per conversation, reader Claude Opus 5.5, single
