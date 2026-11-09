@@ -1,153 +1,153 @@
-# SAWM & Basira Memory liquide — LoCoMo
+# SAWM & Basira Liquid Memory — LoCoMo
 
-**96 %** sur LoCoMo avec Claude Opus 5.5 (catégories 1 à 4, 1 540 questions).
-Juge de référence J de Mem0 : 95,97 % puis 95,84 % sur deux passes ; juge strict GPT-4o : 92,08 % puis 91,95 %.
-En production sur l'API Basira : l'écriture des conversations et le rappel de ce banc
-passent par l'API de production.
-Chaque réponse est publiée ici, question par question, avec les verdicts des juges : recomptez-les vous-même.
+**96%** on LoCoMo with Claude Opus 5.5 (categories 1 to 4, 1,540 questions).
+Mem0's reference J judge: 95.97% then 95.84% over two passes; strict GPT-4o judge: 92.08% then 91.95%.
+In production on the Basira API: in this benchmark, the conversations are written and recalled through the
+production API.
+Every answer is published here, question by question, with the judges' verdicts: recount them yourself.
 
-> **English summary.** SAWM & Basira Memory liquide scores **96 %** on LoCoMo with Claude Opus 5.5 (95.97 % then 95.84 %) (categories 1 to 4,
+> **Summary.** SAWM & Basira Liquid Memory scores **96%** on LoCoMo with Claude Opus 5.5 (95.97% then 95.84%; categories 1 to 4,
 > 1,540 questions) with the Mem0 "J" judge (`gpt-4o-mini`, official Mem0 2025 prompt), over two independent judge
-> passes, and **91.9 % – 92.1 %** with the strict GPT-4o judge of LongMemEval. Memory written and recalled through the
+> passes, and **91.9% – 92.1%** with the strict GPT-4o judge of LongMemEval. Memory written and recalled through the
 > production Basira API, one memory per conversation, reader Claude Opus 5.5, single
-> reading. With recall limited to 160 memories (about a quarter of the conversation) it scores 93.9 %. Adversarial
-> questions (category 5) are reported separately: 82.7 %. On a fixed sample of 310 questions, Opus 5.5 given the full
-> conversation scores 96.1 %; the gap with our 320-memory recall is not statistically significant (J judge,
+> reading. With recall limited to 160 memories (about a quarter of the conversation) it scores 93.9%. Adversarial
+> questions (category 5) are reported separately: 82.7%. On a fixed sample of 310 questions, Opus 5.5 given the full
+> conversation scores 96.1%; the gap with our 320-memory recall is not statistically significant (J judge,
 > -1.3 points, p = 0.29). All graded answers are published with an offline recount script. The LoCoMo data
 > (CC BY-NC 4.0) is not republished.
 
-![Classement LoCoMo](assets/classement-locomo.png)
+![LoCoMo leaderboard](assets/locomo-leaderboard.png)
 
-## Ce que mesure LoCoMo
+## What LoCoMo measures
 
-LoCoMo (Snap Research, ACL 2024) est un test de mémoire conversationnelle à très long terme : 10 conversations
-d'environ 21 800 jetons chacune entre deux personnes, étalées sur de nombreuses sessions, et 1 986 questions. Elles
-demandent de :
+LoCoMo (Snap Research, ACL 2024) is a test of very long-term conversational memory: 10 conversations between two
+people, of about 21,800 tokens each, spread over many sessions, and 1,986 questions. The questions require:
 
-- rassembler des informations dispersées dans plusieurs sessions (multi-sauts) ;
-- raisonner sur les dates et l'ordre des événements (temporel) ;
-- déduire ce qui n'est pas dit mot pour mot (domaine ouvert) ;
-- retrouver un fait précis (simple saut) ;
-- savoir dire que cela n'a pas été dit (catégorie 5, questions pièges).
+- combining information scattered across several sessions (multi-hop);
+- reasoning about dates and the order of events (temporal);
+- inferring what is not stated word for word (open-domain);
+- retrieving a specific fact (single-hop);
+- recognizing that something was never said (category 5, adversarial questions).
 
-Comme tous les fournisseurs qui publient sur LoCoMo, le score principal porte sur les 1 540 questions des
-catégories 1 à 4. La catégorie 5 est mesurée à part.
+As with every provider that publishes LoCoMo results, the main score covers the 1,540 questions of categories 1
+to 4. Category 5 is measured separately.
 
-## Résultats
+## Results
 
-Lecteur : Claude Opus 5.5, une seule lecture. Exactitude sur les 1 540 questions des catégories 1 à 4.
+Reader: Claude Opus 5.5, single reading. Accuracy on the 1,540 questions of categories 1 to 4.
 
-| Rappel de Basira | Juge J, passe 1 | Juge J, passe 2 | Juge strict, passe 1 | Juge strict, passe 2 | Contexte médian |
+| Basira recall | J judge, pass 1 | J judge, pass 2 | Strict judge, pass 1 | Strict judge, pass 2 | Median context |
 |---|---|---|---|---|---|
-| **Memory liquide, jusqu'à 320 souvenirs** | **95,97 % (1 478/1 540)** | **95,84 % (1 476/1 540)** | 92,08 % | 91,95 % | ≈ 18 400 jetons (≈ 48 % de la conversation) |
-| Memory liquide, jusqu'à 160 souvenirs | 93,96 % (1 447/1 540) | 93,90 % (1 446/1 540) | 88,05 % | 87,86 % | ≈ 8 900 jetons (≈ 24 %) |
+| **Liquid Memory, up to 320 memories** | **95.97% (1,478/1,540)** | **95.84% (1,476/1,540)** | 92.08% | 91.95% | ≈ 18,400 tokens (≈ 48% of the conversation) |
+| Liquid Memory, up to 160 memories | 93.96% (1,447/1,540) | 93.90% (1,446/1,540) | 88.05% | 87.86% | ≈ 8,900 tokens (≈ 24%) |
 
-Le **juge J** est celui de Mem0 (consigne officielle Mem0 2025, `gpt-4o-mini`) : c'est celui qui sert de référence
-aux scores publiés par les autres fournisseurs. Le **juge strict** est celui de LongMemEval (`gpt-4o`), plus sévère.
+The **J judge** is Mem0's judge (official Mem0 2025 prompt, `gpt-4o-mini`): it is the reference for the scores
+published by the other providers. The **strict judge** is LongMemEval's judge (`gpt-4o`), which is more severe.
 
-Juge J, passe 1, par catégorie (jusqu'à 320 souvenirs) :
+J judge, pass 1, by category (up to 320 memories):
 
-| Catégorie LoCoMo | Justes | Exactitude |
+| LoCoMo category | Correct | Accuracy |
 |---|---|---|
-| 1 · multi-sauts | 270/282 | 95,74 % |
-| 2 · temporel | 306/321 | 95,33 % |
-| 3 · domaine ouvert | 89/96 | 92,71 % |
-| 4 · simple saut | 813/841 | 96,67 % |
+| 1 · multi-hop | 270/282 | 95.74% |
+| 2 · temporal | 306/321 | 95.33% |
+| 3 · open-domain | 89/96 | 92.71% |
+| 4 · single-hop | 813/841 | 96.67% |
 
-Questions pièges (catégorie 5, 444 questions comptées sur 446 : voir la méthode) : **82,7 %** (367/444) en passe 1,
-81,5 % en passe 2 ; 83,3 % puis 83,6 % avec 160 souvenirs.
+Adversarial questions (category 5, 444 of 446 questions counted: see the method): **82.7%** (367/444) in pass 1,
+81.5% in pass 2; 83.3% then 83.6% with 160 memories.
 
-### Ce que la mémoire rend
+### What the memory returns
 
-Pour chaque question, LoCoMo indique les tours de la conversation qui contiennent la réponse. Avec le rappel jusqu'à
-320 souvenirs, **tous ces tours de preuve sont dans ce que Basira rend au lecteur pour 95,3 % des questions**
-(1 455/1 527 questions dont les preuves sont annotées), alors que le lecteur ne reçoit qu'environ la moitié de la
-conversation. Avec 160 souvenirs (un quart de la conversation), c'est 85,1 %. Champ `preuves_toutes_rendues` dans
-`reponses/`.
+For each question, LoCoMo indicates the conversation turns that contain the answer. With recall of up to
+320 memories, **all of these evidence turns are in what Basira returns to the reader for 95.3% of the questions**
+(1,455/1,527 questions with annotated evidence), even though the reader receives only about half of the
+conversation. With 160 memories (a quarter of the conversation), it is 85.1%. See the `all_evidence_returned`
+field in `answers/`.
 
-### Comparaison avec la conversation complète
+### Comparison with the full conversation
 
-Sur un échantillon fixe de 310 questions des catégories 1 à 4, Claude Opus 5.5 reçoit la conversation entière
-(21 800 jetons) : 298/310, soit **96,13 %** (juge J). Sur ces mêmes 310 questions, la mémoire à 320 souvenirs
-(moitié moins de contexte) obtient 94,84 % : l'écart (-1,3 point) n'est pas significatif (test exact de McNemar,
-p = 0,29, identique aux deux passes). Avec le juge strict, l'écart est de -1,9 point en passe 1 (p = 0,21) et de
--2,6 points en passe 2 (p = 0,04). Avec 160 souvenirs, l'écart est de -2,9 points avec le juge J (p = 0,02) : une
-conversation LoCoMo est courte, et réduire encore le rappel y coûte quelques points. Le détail est dans
-`juge/recompter.py`.
+On a fixed sample of 310 questions from categories 1 to 4, Claude Opus 5.5 is given the entire conversation
+(21,800 tokens): 298/310, i.e. **96.13%** (J judge). On the same 310 questions, the memory with 320 memories
+(half the context) scores 94.84%: the gap (-1.3 points) is not significant (exact McNemar test,
+p = 0.29, identical in both passes). With the strict judge, the gap is -1.9 points in pass 1 (p = 0.21) and
+-2.6 points in pass 2 (p = 0.04). With 160 memories, the gap is -2.9 points with the J judge (p = 0.02): a
+LoCoMo conversation is short, and reducing recall further costs a few points there. The details are in
+`judge/recount.py`.
 
-### Scores publiés par les autres fournisseurs
+### Scores published by other providers
 
-Chiffres publiés par chaque fournisseur, catégories 1 à 4, chacun avec son propre lecteur et son propre juge
-(les protocoles ne sont pas identiques) :
+Figures published by each provider, categories 1 to 4, each with its own reader and its own judge
+(the protocols are not identical):
 
-| Fournisseur | Score publié |
+| Provider | Published score |
 |---|---|
-| **SAWM & Basira Memory liquide (320 souvenirs)** | **95,8 – 96,0 %** (juge J, lecteur Opus 5.5) |
-| Zep | 94,7 % (2026, gpt-5.4) |
-| EverOS | 94,42 % (gpt-4.1-mini, juge gpt-4o-mini) |
-| **SAWM & Basira Memory liquide (160 souvenirs)** | **93,9 %** |
-| Mem0 | 92,5 % (2026, gpt-5 ; 91,6 % dans ses fichiers publiés) |
-| Backboard | 90,0 % (juge GPT-4.1) |
-| MemOS | 75,80 % |
-| Memobase | 75,78 % |
-| Letta | 74,0 % |
+| **SAWM & Basira Liquid Memory (320 memories)** | **95.8 – 96.0%** (J judge, reader Opus 5.5) |
+| Zep | 94.7% (2026, gpt-5.4) |
+| EverOS | 94.42% (gpt-4.1-mini, gpt-4o-mini judge) |
+| **SAWM & Basira Liquid Memory (160 memories)** | **93.9%** |
+| Mem0 | 92.5% (2026, gpt-5; 91.6% in its published files) |
+| Backboard | 90.0% (GPT-4.1 judge) |
+| MemOS | 75.80% |
+| Memobase | 75.78% |
+| Letta | 74.0% |
 
-## Méthode
+## Method
 
-- **Jeu** : LoCoMo, 10 conversations et 1 986 questions, publié par Snap Research. Les catégories (1 multi-sauts,
-  2 temporel, 3 domaine ouvert, 4 simple saut, 5 questions pièges) font partie du jeu public et sont publiées ici
-  avec la clé officielle de chaque question (`conv-NN:qa-NN`).
-- **Mémoire** : une mémoire Basira neuve par conversation. La conversation y est écrite, puis le rappel est fait
-  par l'API Basira de production. Le lecteur ne voit que ce que Basira
-  rappelle.
-- **Rappel** : jusqu'à 320 souvenirs, ou jusqu'à 160.
-- **Lecteur** : Claude Opus 5.5, une seule lecture, sans second essai.
-- **Contexte** : médiane, sur les 1 540 questions des catégories 1 à 4, des jetons fournis au lecteur (tokenizer
-  o200k de GPT-4o).
-- **Juges** : le juge J de Mem0 (`gpt-4o-mini-2024-07-18`, consigne officielle Mem0 2025) et le juge strict de
-  LongMemEval (`gpt-4o-2024-08-06`), température 0 ; deux passes indépendantes sur les mêmes réponses. Les
-  consignes sont lues chez leurs auteurs à des versions figées (voir [`juge/REFERENCES.md`](juge/REFERENCES.md)).
-- **Catégorie 5** : mesurée à part, avec le juge d'abstention de LongMemEval. Deux questions de la conversation 26
-  (signalées par l'issue n° 43 du dépôt LoCoMo : une réponse existe dans la transcription) sont écartées : 444
-  questions comptées sur 446. Elles restent dans les fichiers, marquées `"retiree": true`.
-- **Témoin** : Opus 5.5 avec la conversation complète, sur un échantillon fixe de 310 questions des catégories 1
-  à 4 (et 90 de la catégorie 5), même consigne, mêmes juges.
+- **Dataset**: LoCoMo, 10 conversations and 1,986 questions, published by Snap Research. The categories (1 multi-hop,
+  2 temporal, 3 open-domain, 4 single-hop, 5 adversarial questions) are part of the public dataset and are published
+  here with the official key of each question (`conv-NN:qa-NN`).
+- **Memory**: a fresh Basira memory per conversation. The conversation is written into it, then recall is performed
+  through the production Basira API. The reader sees only what Basira
+  recalls.
+- **Recall**: up to 320 memories, or up to 160.
+- **Reader**: Claude Opus 5.5, single reading, no second attempt.
+- **Context**: median, over the 1,540 questions of categories 1 to 4, of the tokens given to the reader (GPT-4o's
+  o200k tokenizer).
+- **Judges**: Mem0's J judge (`gpt-4o-mini-2024-07-18`, official Mem0 2025 prompt) and LongMemEval's strict judge
+  (`gpt-4o-2024-08-06`), temperature 0; two independent passes over the same answers. The prompts are taken from
+  their authors' repositories at pinned versions (see [`judge/REFERENCES.md`](judge/REFERENCES.md)).
+- **Category 5**: measured separately, with LongMemEval's abstention judge. Two questions from conversation 26
+  (reported in issue #43 of the LoCoMo repository: an answer exists in the transcript) are left out: 444
+  questions counted out of 446. They remain in the files, marked `"excluded": true`.
+- **Control**: Opus 5.5 with the full conversation, on a fixed sample of 310 questions from categories 1
+  to 4 (and 90 from category 5), same prompt, same judges.
 
-## Recomptez vous-même
+## Recount it yourself
 
-Chaque ligne de `reponses/*.jsonl` contient la clé officielle de la question, sa catégorie, la réponse du lecteur,
-le contexte fourni et les verdicts des juges. Le texte des questions et des conversations n'est pas republié.
+Each line of `answers/*.jsonl` contains the official key of the question, its category, the reader's answer,
+the context provided (in tokens and as a share of the conversation) and the judges' verdicts. The text of the
+questions and of the conversations is not republished.
 
 ```sh
-cd juge
-python3 -I recompter.py                 # tous les fichiers de ../reponses
-python3 -I recompter.py ../reponses/rappel-320_opus-5.5_juge-passe1.jsonl
+cd judge
+python3 -I recount.py                 # every file in ../answers
+python3 -I recount.py ../answers/recall-320_opus-5.5_judge-pass1.jsonl
 ```
 
-Le script, sans dépendance ni clé, redonne tous les chiffres ci-dessus : exactitude par juge et par passe, par
-catégorie, catégorie 5, contexte médian, intervalle de Wilson et comparaison avec la conversation complète. Les
-empreintes de tous les fichiers publiés sont dans [`SHA256SUMS`](SHA256SUMS).
+The script, with no dependencies and no key, reproduces every figure above: accuracy by judge and by pass, by
+category, category 5, median context, Wilson interval and the comparison with the full conversation. The
+checksums of all published files are in [`SHA256SUMS`](SHA256SUMS).
 
-## Fichiers
+## Files
 
-| Fichier | Contenu |
+| File | Contents |
 |---|---|
-| `resultats.json` | les chiffres ci-dessus, lisibles par une machine |
-| `reponses/rappel-320_*`, `rappel-160_*` | les 1 986 réponses jugées, par passe du juge |
-| `reponses/conversation-complete-310_*` | les réponses du témoin (400 questions), par passe du juge |
-| `juge/recompter.py` | recomptage hors ligne, sans clé |
-| `juge/REFERENCES.md` | consignes officielles des juges : versions figées et empreintes |
-| `assets/classement-locomo.png` | le classement ci-dessus |
+| `results.json` | the figures above, machine-readable |
+| `answers/recall-320_*`, `recall-160_*` | the 1,986 graded answers, per judge pass |
+| `answers/full-conversation-310_*` | the control's answers (400 questions), per judge pass |
+| `judge/recount.py` | offline recount, no key needed |
+| `judge/REFERENCES.md` | the judges' official prompts: pinned versions and checksums |
+| `assets/locomo-leaderboard.png` | the leaderboard above |
 
-## Crédits et licences
+## Credits and licenses
 
-LoCoMo est l'œuvre d'Adyasha Maharana et de ses coauteurs, Snap Research (*Evaluating Very Long-Term Conversational
-Memory of LLM Agents*, ACL 2024) : [github.com/snap-research/locomo](https://github.com/snap-research/locomo), jeu
-sous licence CC BY-NC 4.0. **Le jeu n'est pas republié ici** (ni conversations, ni questions) : téléchargez-le chez
-ses auteurs. Le juge J est celui de [Mem0](https://github.com/mem0ai/mem0) (Apache-2.0) et le juge strict celui de
-[LongMemEval](https://github.com/xiaowu0162/LongMemEval) (MIT), référencés et non recopiés. Le code et les réponses
-de SAWM sont sous licence MIT (`LICENSE`).
+LoCoMo is the work of Adyasha Maharana and co-authors, Snap Research (*Evaluating Very Long-Term Conversational
+Memory of LLM Agents*, ACL 2024): [github.com/snap-research/locomo](https://github.com/snap-research/locomo), dataset
+under the CC BY-NC 4.0 license. **The dataset is not republished here** (neither conversations nor questions):
+download it from its authors. The J judge is [Mem0](https://github.com/mem0ai/mem0)'s (Apache-2.0) and the strict
+judge is [LongMemEval](https://github.com/xiaowu0162/LongMemEval)'s (MIT), referenced and not copied. SAWM's code
+and answers are under the MIT license (`LICENSE`).
 
 ---
 
-[SAWM](https://sawm.io) · Basira Memory — la mémoire des agents IA.
+[SAWM](https://sawm.io) · Basira Memory — memory for AI agents.

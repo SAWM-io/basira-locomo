@@ -1,423 +1,423 @@
 {
  "benchmark": "LoCoMo",
- "jeu": "https://github.com/snap-research/locomo",
+ "dataset": "https://github.com/snap-research/locomo",
  "reference": "Maharana et al., Evaluating Very Long-Term Conversational Memory of LLM Agents, ACL 2024",
- "licence_jeu": "CC BY-NC 4.0 (non republié)",
+ "dataset_license": "CC BY-NC 4.0 (not republished)",
  "date": "2026-11-05",
- "lecteur": "Claude Opus 5.5 (une lecture)",
+ "reader": "Claude Opus 5.5 (single reading)",
  "questions": {
   "total": 1986,
   "categories_1_4": 1540,
-  "categorie_5": 446,
-  "categorie_5_comptees": 444
+  "category_5": 446,
+  "category_5_counted": 444
  },
- "juges": {
+ "judges": {
   "j": {
-   "modele": "gpt-4o-mini-2024-07-18",
-   "consigne": "llm_judge.py de Mem0, commit 393a4fd5a6cfeb754857a2229726f567a9fadf36, SHA-256 311050fd39e991220e220b5e4b753725c3e7616d8cef84e8c737eb902fc13af8",
+   "model": "gpt-4o-mini-2024-07-18",
+   "prompt": "Mem0 llm_judge.py, commit 393a4fd5a6cfeb754857a2229726f567a9fadf36, SHA-256 311050fd39e991220e220b5e4b753725c3e7616d8cef84e8c737eb902fc13af8",
    "temperature": 0
   },
   "strict": {
-   "modele": "gpt-4o-2024-08-06",
-   "consigne": "evaluate_qa.py de LongMemEval, commit d6dc8b50a2d9ac0c99485ea28fa5755c62414c34, SHA-256 ecce9c4c79dc89d99534ac17b383a5cbb5b9f0c69ee98adaf0684742e3d95251",
+   "model": "gpt-4o-2024-08-06",
+   "prompt": "LongMemEval evaluate_qa.py, commit d6dc8b50a2d9ac0c99485ea28fa5755c62414c34, SHA-256 ecce9c4c79dc89d99534ac17b383a5cbb5b9f0c69ee98adaf0684742e3d95251",
    "temperature": 0
   }
  },
- "etiquettes_categories": {
-  "1": "multi-sauts",
-  "2": "temporel",
-  "3": "domaine ouvert",
-  "4": "simple saut",
-  "5": "questions pièges"
+ "category_labels": {
+  "1": "multi-hop",
+  "2": "temporal",
+  "3": "open-domain",
+  "4": "single-hop",
+  "5": "adversarial"
  },
  "configurations": {
-  "conversation-complete-310": {
-   "passe1": {
+  "full-conversation-310": {
+   "pass1": {
     "j": {
-     "justes": 298,
+     "correct": 298,
      "n": 310,
      "pct": 96.13,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 56,
+       "correct": 56,
        "n": 57,
        "pct": 98.25
       },
       "2": {
-       "justes": 59,
+       "correct": 59,
        "n": 65,
        "pct": 90.77
       },
       "3": {
-       "justes": 18,
+       "correct": 18,
        "n": 19,
        "pct": 94.74
       },
       "4": {
-       "justes": 165,
+       "correct": 165,
        "n": 169,
        "pct": 97.63
       }
      }
     },
     "strict": {
-     "justes": 289,
+     "correct": 289,
      "n": 310,
      "pct": 93.23,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 49,
+       "correct": 49,
        "n": 57,
        "pct": 85.96
       },
       "2": {
-       "justes": 61,
+       "correct": 61,
        "n": 65,
        "pct": 93.85
       },
       "3": {
-       "justes": 17,
+       "correct": 17,
        "n": 19,
        "pct": 89.47
       },
       "4": {
-       "justes": 162,
+       "correct": 162,
        "n": 169,
        "pct": 95.86
       }
      }
     },
-    "categorie_5": {
-     "justes": 70,
+    "category_5": {
+     "correct": 70,
      "n": 90,
      "pct": 77.78
     },
-    "contexte_median_jetons": 21802.0,
-    "part_conversation_mediane": 1.0
+    "median_context_tokens": 21802.0,
+    "median_conversation_fraction": 1.0
    },
-   "passe2": {
+   "pass2": {
     "j": {
-     "justes": 298,
+     "correct": 298,
      "n": 310,
      "pct": 96.13,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 56,
+       "correct": 56,
        "n": 57,
        "pct": 98.25
       },
       "2": {
-       "justes": 59,
+       "correct": 59,
        "n": 65,
        "pct": 90.77
       },
       "3": {
-       "justes": 18,
+       "correct": 18,
        "n": 19,
        "pct": 94.74
       },
       "4": {
-       "justes": 165,
+       "correct": 165,
        "n": 169,
        "pct": 97.63
       }
      }
     },
     "strict": {
-     "justes": 291,
+     "correct": 291,
      "n": 310,
      "pct": 93.87,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 49,
+       "correct": 49,
        "n": 57,
        "pct": 85.96
       },
       "2": {
-       "justes": 62,
+       "correct": 62,
        "n": 65,
        "pct": 95.38
       },
       "3": {
-       "justes": 18,
+       "correct": 18,
        "n": 19,
        "pct": 94.74
       },
       "4": {
-       "justes": 162,
+       "correct": 162,
        "n": 169,
        "pct": 95.86
       }
      }
     },
-    "categorie_5": {
-     "justes": 72,
+    "category_5": {
+     "correct": 72,
      "n": 90,
      "pct": 80.0
     },
-    "contexte_median_jetons": 21802.0,
-    "part_conversation_mediane": 1.0
+    "median_context_tokens": 21802.0,
+    "median_conversation_fraction": 1.0
    }
   },
-  "rappel-160": {
-   "passe1": {
+  "recall-160": {
+   "pass1": {
     "j": {
-     "justes": 1447,
+     "correct": 1447,
      "n": 1540,
      "pct": 93.96,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 258,
+       "correct": 258,
        "n": 282,
        "pct": 91.49
       },
       "2": {
-       "justes": 300,
+       "correct": 300,
        "n": 321,
        "pct": 93.46
       },
       "3": {
-       "justes": 80,
+       "correct": 80,
        "n": 96,
        "pct": 83.33
       },
       "4": {
-       "justes": 809,
+       "correct": 809,
        "n": 841,
        "pct": 96.2
       }
      }
     },
     "strict": {
-     "justes": 1356,
+     "correct": 1356,
      "n": 1540,
      "pct": 88.05,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 209,
+       "correct": 209,
        "n": 282,
        "pct": 74.11
       },
       "2": {
-       "justes": 297,
+       "correct": 297,
        "n": 321,
        "pct": 92.52
       },
       "3": {
-       "justes": 72,
+       "correct": 72,
        "n": 96,
        "pct": 75.0
       },
       "4": {
-       "justes": 778,
+       "correct": 778,
        "n": 841,
        "pct": 92.51
       }
      }
     },
-    "categorie_5": {
-     "justes": 370,
+    "category_5": {
+     "correct": 370,
      "n": 444,
      "pct": 83.33
     },
-    "contexte_median_jetons": 8937.5,
-    "part_conversation_mediane": 0.2413
+    "median_context_tokens": 8937.5,
+    "median_conversation_fraction": 0.2413
    },
-   "passe2": {
+   "pass2": {
     "j": {
-     "justes": 1446,
+     "correct": 1446,
      "n": 1540,
      "pct": 93.9,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 258,
+       "correct": 258,
        "n": 282,
        "pct": 91.49
       },
       "2": {
-       "justes": 300,
+       "correct": 300,
        "n": 321,
        "pct": 93.46
       },
       "3": {
-       "justes": 81,
+       "correct": 81,
        "n": 96,
        "pct": 84.38
       },
       "4": {
-       "justes": 807,
+       "correct": 807,
        "n": 841,
        "pct": 95.96
       }
      }
     },
     "strict": {
-     "justes": 1353,
+     "correct": 1353,
      "n": 1540,
      "pct": 87.86,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 208,
+       "correct": 208,
        "n": 282,
        "pct": 73.76
       },
       "2": {
-       "justes": 296,
+       "correct": 296,
        "n": 321,
        "pct": 92.21
       },
       "3": {
-       "justes": 72,
+       "correct": 72,
        "n": 96,
        "pct": 75.0
       },
       "4": {
-       "justes": 777,
+       "correct": 777,
        "n": 841,
        "pct": 92.39
       }
      }
     },
-    "categorie_5": {
-     "justes": 371,
+    "category_5": {
+     "correct": 371,
      "n": 444,
      "pct": 83.56
     },
-    "contexte_median_jetons": 8937.5,
-    "part_conversation_mediane": 0.2413
+    "median_context_tokens": 8937.5,
+    "median_conversation_fraction": 0.2413
    }
   },
-  "rappel-320": {
-   "passe1": {
+  "recall-320": {
+   "pass1": {
     "j": {
-     "justes": 1478,
+     "correct": 1478,
      "n": 1540,
      "pct": 95.97,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 270,
+       "correct": 270,
        "n": 282,
        "pct": 95.74
       },
       "2": {
-       "justes": 306,
+       "correct": 306,
        "n": 321,
        "pct": 95.33
       },
       "3": {
-       "justes": 89,
+       "correct": 89,
        "n": 96,
        "pct": 92.71
       },
       "4": {
-       "justes": 813,
+       "correct": 813,
        "n": 841,
        "pct": 96.67
       }
      }
     },
     "strict": {
-     "justes": 1418,
+     "correct": 1418,
      "n": 1540,
      "pct": 92.08,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 229,
+       "correct": 229,
        "n": 282,
        "pct": 81.21
       },
       "2": {
-       "justes": 305,
+       "correct": 305,
        "n": 321,
        "pct": 95.02
       },
       "3": {
-       "justes": 80,
+       "correct": 80,
        "n": 96,
        "pct": 83.33
       },
       "4": {
-       "justes": 804,
+       "correct": 804,
        "n": 841,
        "pct": 95.6
       }
      }
     },
-    "categorie_5": {
-     "justes": 367,
+    "category_5": {
+     "correct": 367,
      "n": 444,
      "pct": 82.66
     },
-    "contexte_median_jetons": 18425.5,
-    "part_conversation_mediane": 0.4827
+    "median_context_tokens": 18425.5,
+    "median_conversation_fraction": 0.4827
    },
-   "passe2": {
+   "pass2": {
     "j": {
-     "justes": 1476,
+     "correct": 1476,
      "n": 1540,
      "pct": 95.84,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 269,
+       "correct": 269,
        "n": 282,
        "pct": 95.39
       },
       "2": {
-       "justes": 305,
+       "correct": 305,
        "n": 321,
        "pct": 95.02
       },
       "3": {
-       "justes": 89,
+       "correct": 89,
        "n": 96,
        "pct": 92.71
       },
       "4": {
-       "justes": 813,
+       "correct": 813,
        "n": 841,
        "pct": 96.67
       }
      }
     },
     "strict": {
-     "justes": 1416,
+     "correct": 1416,
      "n": 1540,
      "pct": 91.95,
-     "par_categorie": {
+     "by_category": {
       "1": {
-       "justes": 231,
+       "correct": 231,
        "n": 282,
        "pct": 81.91
       },
       "2": {
-       "justes": 302,
+       "correct": 302,
        "n": 321,
        "pct": 94.08
       },
       "3": {
-       "justes": 80,
+       "correct": 80,
        "n": 96,
        "pct": 83.33
       },
       "4": {
-       "justes": 803,
+       "correct": 803,
        "n": 841,
        "pct": 95.48
       }
      }
     },
-    "categorie_5": {
-     "justes": 362,
+    "category_5": {
+     "correct": 362,
      "n": 444,
      "pct": 81.53
     },
-    "contexte_median_jetons": 18425.5,
-    "part_conversation_mediane": 0.4827
+    "median_context_tokens": 18425.5,
+    "median_conversation_fraction": 0.4827
    }
   }
  },
- "concurrents_publies": {
-  "avertissement": "chiffres publiés par chaque fournisseur, catégories 1 à 4, avec son propre lecteur et son propre juge ; protocoles non identiques",
+ "published_competitors": {
+  "caveat": "figures published by each provider, categories 1 to 4, each with its own reader and its own judge; protocols not identical",
   "Zep": 94.7,
   "EverOS": 94.42,
   "Mem0": 92.5,
@@ -426,29 +426,29 @@
   "Memobase": 75.78,
   "Letta": 74.0
  },
- "comparaison_conversation_complete": {
+ "full_conversation_comparison": {
   "questions": 310,
-  "rappel_320": {
-   "j_passe1": {
-    "ecart_points": -1.3,
+  "recall_320": {
+   "j_pass1": {
+    "gap_points": -1.3,
     "p": 0.29
    },
-   "strict_passe1": {
-    "ecart_points": -1.9,
+   "strict_pass1": {
+    "gap_points": -1.9,
     "p": 0.21
    },
-   "strict_passe2": {
-    "ecart_points": -2.6,
+   "strict_pass2": {
+    "gap_points": -2.6,
     "p": 0.04
    }
   },
-  "rappel_160": {
-   "j_passe1": {
-    "ecart_points": -2.9,
+  "recall_160": {
+   "j_pass1": {
+    "gap_points": -2.9,
     "p": 0.02
    }
   },
-  "test": "McNemar exact",
-  "temoin_j_passe1": "298/310 = 96,13 %"
+  "test": "exact McNemar",
+  "control_j_pass1": "298/310 = 96.13%"
  }
 }
